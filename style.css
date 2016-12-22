@@ -1,0 +1,54 @@
+body {
+  text-align: center;
+  background-image: url("background-img.jpg");
+  font-family: "Exo 2", "sans serif";
+  padding: 10px;
+  color: black; }
+
+.heading {
+  color: black;
+  text-shadow: 3px 3px 4px white; }
+
+.row {
+  width: 80%;
+  height: 600px;
+  padding: 40px;
+  margin: auto;
+  margin-bottom: 200px;
+  position: relative; }
+
+.preview {
+  padding: 0 20px 0 20px;
+  width: 90%;
+  text-align: left;
+  background-color: white;
+  font-size: 18px;
+  margin-left: 20px;
+  position: relative; }
+
+.wrapper {
+  height: inherit;
+  position: relative; }
+
+.markdown {
+  height: inherit;
+  padding: 0 20px 0 20px;
+  width: 90%;
+  background-color: #80b3ff;
+  font-size: 18px;
+  box-shadow: inset 5px 5px 2px black;
+  text-shadow: 2px 2px 2px black;
+  position: relative; }
+
+.wins {
+  border-color: black;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 5px; }
+
+.wrapper2 {
+  height: inherit;
+  position: relative;
+  mergin: auto; }
+
+/*# sourceMappingURL=style.css.map */

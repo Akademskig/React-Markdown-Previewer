@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Previewer</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma|Exo+2" rel="stylesheet"> 
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css" type="text/css">    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+ 
+  <script src="https://unpkg.com/react@15.3.1/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>  
+  
+  
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1 class="heading"><b> React & SASS </br>Markdown Previewer </b>
+      <div id ="display" class="wrapper"></div>
+    </div> 
+
+    <script type="text/babel">
+      
+      var MarkdownText = React.createClass({
+
+      getInitialState: function() {
+        return {
+          text: "\nHeading\n=======\n\nSub-heading\n-----------\n \n### Another deeper heading\n \nParagraphs are separated\nby a blank line.\n\nLeave 2 spaces at the end of a line to do a  \nline break\n\nText attributes *italic*, **bold**, \n`monospace`, ~~strikethrough~~ .\n\nShopping list:\n\n  * apples\n  * oranges\n  * pears\n\nNumbered list:\n\n  1. apples\n  2. oranges\n  3. pears\n\nThe rain---not the reign---in\nSpain.\n\n *[Herman Fassett](https://freecodecamp.com/hermanfassett)*"
+        }
+      },
+
+      updateText: function() {
+        var val = this.refs.newInput.value;
+        this.setState({
+          text: val
+        });
+      },
+     render: function() {
+        
+         var text=this.state.text;
+         var markedText= {__html:marked(text)};
+        console.log(text);
+        return (
+            
+          <div className="row">
+            <div className="col-xs-6 wrapper2">
+              <h2><b>Marked text</b></h2>
+              <div className="preview wins" dangerouslySetInnerHTML={markedText}></div>      
+              </div>
+            <div className="col-xs-6 wrapper2">
+              <h2><b>Input text</b></h2>
+              <textarea onChange={this.updateText} ref="newInput" className= "markdown wins" defaultValue={text}></textarea>
+            </div>
+          </div>);
+        }
+      });
+
+ReactDOM.render(
+  <MarkdownText />,
+  document.getElementById("display")
+);
+
+    </script>
+</body>
+
+</html>
