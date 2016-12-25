@@ -18,52 +18,51 @@
   </head>
   <body>
     <div class="container-fluid">
-      <h1 class="heading"><b> React & SASS </br>Markdown Previewer </b>
-      <div id ="display" class="wrapper"></div>
-    </div> 
+      <h1 class="heading"><b> React & SASS </b><br>Markdown Previewer </h1>
+      <div id ="display"></div>
+    </div>
 
     <script type="text/babel">
       
       var MarkdownText = React.createClass({
 
-      getInitialState: function() {
-        return {
-          text: "\nHeading\n=======\n\nSub-heading\n-----------\n \n### Another deeper heading\n \nParagraphs are separated\nby a blank line.\n\nLeave 2 spaces at the end of a line to do a  \nline break\n\nText attributes *italic*, **bold**, \n`monospace`, ~~strikethrough~~ .\n\nShopping list:\n\n  * apples\n  * oranges\n  * pears\n\nNumbered list:\n\n  1. apples\n  2. oranges\n  3. pears\n\nThe rain---not the reign---in\nSpain.\n\n *[Herman Fassett](https://freecodecamp.com/hermanfassett)*"
-        }
-      },
+        getInitialState: function() {
+          return {
+            text: "\nHeading\n=======\n\nSub-heading\n-----------\n \n### Another deeper heading\n \nParagraphs are separated\nby a blank line.\n\nLeave 2 spaces at the end of a line to do a  \nline break\n\nText attributes *italic*, **bold**, \n`monospace`, ~~strikethrough~~ .\n\nShopping list:\n\n  * apples\n  * oranges\n  * pears\n\nNumbered list:\n\n  1. apples\n  2. oranges\n  3. pears\n\nThe rain---not the reign---in\nSpain.\n\n *[Herman Fassett](https://freecodecamp.com/hermanfassett)*"
+          }
+        },
 
-      updateText: function() {
-        var val = this.refs.newInput.value;
-        this.setState({
-          text: val
-        });
-      },
-     render: function() {
+        updateText: function() {
+          var val = this.refs.newInput.value;
+          this.setState({
+            text: val
+          });
+        },
         
-         var text=this.state.text;
-         var markedText= {__html:marked(text)};
-        console.log(text);
-        return (
-            
-          <div className="row">
-            <div className="col-xs-6 wrapper2">
-              <h2><b>Marked text</b></h2>
-              <div className="preview wins" dangerouslySetInnerHTML={markedText}></div>      
+       render: function() {    
+           var text=this.state.text;
+           var markedText= {__html:marked(text)};
+           return (        
+              <div className="row">
+                <div className="col-xs-6 wrapper">
+                  <h2><b>Marked text</b></h2>
+                  <div className="preview" dangerouslySetInnerHTML={markedText}></div>      
+                </div>
+                <div className="col-xs-6 wrapper">
+                  <h2><b>Input text</b></h2>
+                  <textarea onChange={this.updateText} ref="newInput" className= "markdown wins" defaultValue={text}></textarea>
+                </div>
               </div>
-            <div className="col-xs-6 wrapper2">
-              <h2><b>Input text</b></h2>
-              <textarea onChange={this.updateText} ref="newInput" className= "markdown wins" defaultValue={text}></textarea>
-            </div>
-          </div>);
+          );
         }
       });
 
-ReactDOM.render(
-  <MarkdownText />,
-  document.getElementById("display")
-);
+    ReactDOM.render(
+      <MarkdownText />,
+      document.getElementById("display")
+    );
 
-    </script>
+  </script>
 </body>
 
 </html>
